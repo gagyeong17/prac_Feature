@@ -1,103 +1,98 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useNavigate } from 'react-router-dom'
 
 const Signup = () => {
-    const [tel, setTel] = React.useState("");
-    const [num , setNum] = React.useState("");
-    const [open, setOpen] = React.useState(false);
-
-    const number = (tel) => {
-        const regPhone = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
-        if (regPhone.test(tel) === true) {
-            certification()
-            setOpen(true)
-                window.alert('번호합격')
-            } else {
-                window.alert('번호실패')
-            }
-    }
-
-    const certification = () => {
-            // try {
-            //     tempAuthObj = await twilioHelper.auth(tel);
-            //     if (tempAuthObj instanceof Error) {
-            //     res.status(500).json({ error: tempAuthObj.message });
-            //     } else {
-            //     res.sendStatus(200);
-            //     }
-            // } catch (err) {
-            //     console.error('error is ', err);
-            //     res.status(500).json({ error: err });
-            // }
-    }
-
-    const Chk = () => {
-        //번호확인하러가기
-        // const { userVerifyNum, userPhoneNum } = req.body;
-        //     if (userVerifyNum !== undefined && userPhoneNum !== undefined) {
-        //         if (tempAuthObj[userPhoneNum] === Number(userVerifyNum)) {
-        //         delete tempAuthObj[userPhoneNum];
-        //         res.sendStatus(200);
-        //         } else {
-        //         res.sendStatus(401);
-        //         }
-        //     } else {
-        //         if (userPhoneNum === undefined || userPhoneNum === '') {
-        //         res.status(400).json('변경할 휴대폰 번호를 입력해주세요');
-        //         } else if (userVerifyNum === undefined) {
-        //         res.status(400).json('인증번호를 입력해주세요');
-        //         } else {
-        //         res.status(400).json('변경할 휴대폰 번호를 입력해주세요');
-        //         }
-        //     }
-    }
+    const navigate = useNavigate()
+    
 
   return (
-      <Container>
-        <Box>
-            {/* <InputStyle placeholder=' ID' />
-            <InputStyle placeholder=' PW' /> */}
-            <InputStyle placeholder=' Phone Number' onChange={(e) => { setTel(e.target.value) }} />   
-            <Btn onClick={number}>인증번호 발송</Btn>
-              {open ? (<>
-                <InputStyle placeholder=' 인증번호 입력' onChange={(e) => { setNum(e.target.value) }} />   
-                <Btn onClick={Chk}>인증번호 확인</Btn>
-              </>) : null}  
-        </Box>   
-    </Container>
+       <Wrapper>
+      <div>
+        <h2>아임포트 테스트</h2>
+        <h4>아임포트 리액트 테스트 화면입니다.</h4>
+        <h4>아래 버튼을 눌러 결제 또는 본인인증 테스트를 진행해주세요.</h4>
+      </div>
+      <div></div>
+      <ButtonContainer>
+        <button onClick={() => {window.alert('결제 테스트는 없다!')}}>
+          {/* <Icon type="credit-card" /> */}
+          결제 테스트
+        </button>
+        <button onClick={() => {navigate('/certification')}}>
+          {/* <Icon type="user" /> */}
+          본인인증 테스트
+        </button>
+      </ButtonContainer>
+    </Wrapper>
   )
 }
 
-const Container = styled.div`
-    border : 1px solid red;
-    width: 90%;
-    height: 500px;
-    margin: auto;
-`
+const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 
-const Box = styled.div`
-    /* border : 1px solid orange; */
-    width: 500px;
-    height: 500px;
-    margin: auto;
+  > div {
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+  > div:first-child {
+    background-color: #344e81;
+    top: 0;
+    bottom: 50%;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    gap: 50px;
-`
+    justify-content: center;
+    flex-direction: column;
+    > * {
+      color: #fff;
+    }
 
-const InputStyle = styled.input`
-    border: none;
-    border-bottom: 1px solid #ddd;
-    width: 300px;
-`
+    h4 {
+      margin: 0;
+      line-height: 1.5;
+    }
+  }
+  > div:nth-child(2) {
+    top: 50%;
+    bottom: 0;
+  }
+`;
 
-const Btn = styled.button`
-    width: 300px;
-    height: 30px;
+const ButtonContainer = styled.div`
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 50%;
+  margin-top: -5rem;
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 10rem;
+    width: 15rem;
+    margin: 0 0.5rem;
     border: none;
-    border-radius: 50px;
-`
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.13);
+    .anticon {
+      margin-bottom: 0.5rem;
+      font-size: 2rem;
+      & + span {
+        margin: 0;
+      }
+    }
+  }
+`;
 
 export default Signup
