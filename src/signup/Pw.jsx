@@ -3,26 +3,33 @@ import styled from 'styled-components';
 
 const Pw = () => {
     const [num, setNum] = React.useState()
-    // 정규 표현식 (영문, 숫자, 특수문자를 10자리 이상 포함)
-    let check = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{10,}$/;
-
+    
     //이메일
     const email = /^[\w.-]{1,64}@[\w.-]{1,125}.\w{2,4}$/;
 
-    const chk = (num) => {
-        // 정규 표현식을 통과하지 못하면
-        if(!check.test(num)) {
-            window.alert('떙! 비번 다시 입력')
-        } else {
-            window.alert('pass!')
-            
-        }
+    const CHK = () => {
+    if (num === "" ) {
+      window.alert('입력해라')
+      return;
+    } else {
+      chk(num)
     }
+  }
+    const chk = (num) => {
+    // 정규 표현식 (영문, 숫자, 특수문자를 10자리 이상 포함)
+    const check = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{10,}$/;
+    // 정규 표현식을 통과하지 못하면
+    if (check.test(num)) {
+        window.alert('pass!')
+    } else {
+        window.alert('떙! 비번 다시 입력')
+    }
+  }
 
   return (
     <Wrap>
         <Title type='password' onChange={(e)=>{setNum(e.target.value)}}/>
-        <Btn onClick={chk(num)}>첵첵</Btn>
+        <Btn onClick={CHK}>첵첵</Btn>
     </Wrap>
   )
 }
