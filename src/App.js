@@ -10,6 +10,7 @@ import Result from "./certificationResult/Result";
 import Writing from "./notice/Writing";
 import Sms from "./message/Sms";
 import Pw from "./signup/Pw";
+import Calendar from "./calendar/Calendar";
 
 function App() {
   return (
@@ -29,6 +30,8 @@ function App() {
         <Route path="/writing" exact element={<Writing />} />
         {/* 비밀번호 유효성검사 */}
         <Route path="/pw" exact element={<Pw />} />
+        {/* 캘린더 연동 */}
+        <Route path="/calendar" exact element={<Calendar />} />
       </Routes>
     </BrowserRouter>
   );

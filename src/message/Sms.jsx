@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import axios from 'axios'
 
 const Sms = () => {
     const [title, setTitle] = React.useState('')
@@ -8,7 +9,11 @@ const Sms = () => {
     console.log('내용', txt)
     const send = () => {
     // window.alert(title,txt)
-}
+        // const KakaoURL = 'https://kapi.kakao.com/v2/api/talk/memo/default/send'
+        axios.post('서버주소', {txt},
+            { headers: { Authorization: "Bearer " + process.env.REACT_APP_ACCESS_TOKEN } }
+        )
+    }
 
     return (
             <Wrap>
