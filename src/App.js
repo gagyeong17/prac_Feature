@@ -11,6 +11,8 @@ import Writing from "./notice/Writing";
 import Sms from "./message/Sms";
 import Pw from "./signup/Pw";
 import Calendar from "./calendar/Calendar";
+import PieChart from "./chart/PieChart";
+import Login from "./login/Login";
 
 function App() {
   return (
@@ -32,6 +34,10 @@ function App() {
         <Route path="/pw" exact element={<Pw />} />
         {/* 캘린더 연동 */}
         <Route path="/calendar" exact element={<Calendar />} />
+        {/* 파이그래프 */}
+        <Route path="/pie" exact element={<PieChart />} />
+        {/* 로그인 */}
+        <Route path="/login" exact element={<Login />} />
       </Routes>
     </BrowserRouter>
   );

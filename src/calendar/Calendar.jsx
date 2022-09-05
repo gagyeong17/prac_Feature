@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
+import googleCalendarPlugin from '@fullcalendar/google-calendar';
 
 // import 'main.css 파일이 위치한 경로'
 
@@ -35,11 +36,28 @@ const Calendar = () => {
             "id":3 
         }
     ]
-}
+ }
+    const apiKey = process.env.REACT_APP_GOOGLE_APIKEY;
+    const ID = process.env.REACT_APP_GOOGLE_ID;
     return (
         <div className="App">
         <Wrap>
-                <FullCalendar defaultView="dayGridMonth" plugins={[dayGridPlugin]} events={events.calendarList} eventColor='#ef3fae' />
+                <FullCalendar
+                    defaultView="dayGridMonth"
+                    plugins={[dayGridPlugin, googleCalendarPlugin]}
+                    // events={events.calendarList}
+                    // eventColor='#ef3fae'
+                    googleCalendarApiKey={apiKey}
+                    events={{
+                        googleCalendarId: {ID},
+                    }}
+                    eventDisplay={'block'}
+                    eventTextColor={'#0d0101'}
+                    eventColor={'#F2921D'}
+                    height={'660px'}
+                    Toolbar
+                    
+                />
                 <Btn onClick={() => {window.open('https://whattime.co.kr/leanoncompany/calendar21?date=2022-08-25&time_zone=Asia%2FSeoul')}}>연동쓰</Btn>
         </Wrap>
       </div>
@@ -60,7 +78,7 @@ const Btn = styled.button`
     border: none;
     color: #fff;
     height:40px;
-    width:111px;
+    /* width:80%; */
 `
 
 export default Calendar
