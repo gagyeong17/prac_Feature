@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-const Writing = () => {
+const Check = () => {
   const [select, setSelect] = useState([])
   console.log(select)
 
@@ -101,4 +101,4 @@ const StyledTable = styled.table`
     width: 150px;
   }
 `;
-export default Writing
+export default Check;
