@@ -10,6 +10,7 @@ const Sms = () => {
     const send = () => {
     // window.alert(title,txt)
         // const KakaoURL = 'https://kapi.kakao.com/v2/api/talk/memo/default/send'
+        // 카카오톡 액세스토큰
         axios.post('서버주소', {txt},
             { headers: { Authorization: "Bearer " + process.env.REACT_APP_ACCESS_TOKEN } }
         )

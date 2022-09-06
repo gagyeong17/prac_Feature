@@ -7,12 +7,13 @@ import RedirectURI from "./login/RedirectUrl";
 import Notification from "./notification/Notification";
 import Certification from "./certification/Certification";
 import Result from "./certificationResult/Result";
-import Writing from "./notice/Writing";
+import Check from "./notice/Check";
 import Sms from "./message/Sms";
 import Pw from "./signup/Pw";
 import Calendar from "./calendar/Calendar";
 import PieChart from "./chart/PieChart";
 import Login from "./login/Login";
+import Posting from "./notice/Posting";
 
 function App() {
   return (
@@ -29,7 +30,7 @@ function App() {
         <Route path="/notification" exact element={<Notification />} />
         <Route path="/sms" exact element={<Sms />} />
         {/* 선택삭제를 해볼까해 */}
-        <Route path="/writing" exact element={<Writing />} />
+        <Route path="/check" exact element={<Check />} />
         {/* 비밀번호 유효성검사 */}
         <Route path="/pw" exact element={<Pw />} />
         {/* 캘린더 연동 */}
@@ -38,6 +39,8 @@ function App() {
         <Route path="/pie" exact element={<PieChart />} />
         {/* 로그인 */}
         <Route path="/login" exact element={<Login />} />
+        {/* 게시판을 해볼까해 */}
+        <Route path="/posting" exact element={<Posting />} />
       </Routes>
     </BrowserRouter>
   );
